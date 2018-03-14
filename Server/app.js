@@ -5,14 +5,40 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const session = require ('express-session');
+const passport = require ('passport');
+var LocalStrategy = require('passport-local').Strategy;
+require ('./helpers/passport');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
+const auth = require ('./routes/auth');
 
 var app = express();
+
+app.use(require("cors")());
+
+
+require("mongoose").connect('mongodb://localhost/bici-amor')
+.then(console.log("Connected to DB!!!"));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+//passport session
+
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true,
+  cookie : { httpOnly: true, maxAge: 2419200000 }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -24,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
