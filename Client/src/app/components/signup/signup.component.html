@@ -1,0 +1,9 @@
+<h1>Hello!<br>Account Creation</h1>
+<form>
+  <input [(ngModel)]="newUser.name" type="text" placeholder="What's Your Name?" name="name" required><br>
+  <input [(ngModel)]="newUser.email" type="email" placeholder="What's Your E-mail?" name="email" required><br>
+  <input [(ngModel)]="newUser.password" type="password" placeholder="Create Your Password" name="password" required><br>
+  <input [(ngModel)]="newUser.password2" type="password" placeholder="Repeat Your Password" name="password2" required><br>
+  <button (click)="signUp()" *ngIf="newUser.password === newUser.password2"> Create Account</button>
+  <button *ngIf="newUser.password !== newUser.password2" disabled>Create Account</button>
+</form>

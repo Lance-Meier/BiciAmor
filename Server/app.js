@@ -1,3 +1,4 @@
+//From Express
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,29 +6,39 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//Import Session and Passport Dependency
 const session = require ('express-session');
 const passport = require ('passport');
 var LocalStrategy = require('passport-local').Strategy;
 require ('./helpers/passport');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-const auth = require ('./routes/auth');
+//Import Routes
+const index = require('./routes/index');
+const listings = require('./routes/listings');
+const events = require('./routes/events');
+const users = require('./routes/users');
+const auth =  require('./routes/auth');
 
+//Use Cors to Connect to the Client Side
 var app = express();
+const cors = require("cors");
+const corsOptions = {
+  credentials:true,
+  origin:true
+}
 
-app.use(require("cors")());
+app.use(cors(corsOptions));
 
 
+//Create DB: Modify address as needed for dev and prod
 require("mongoose").connect('mongodb://localhost/bici-amor')
 .then(console.log("Connected to DB!!!"));
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//passport session
+//Passport Session
 
 app.use(session({
   secret: 'secret',
@@ -48,9 +59,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//Use routes: best practice is to use /api when querying from the front
 app.use('/', index);
-app.use('/users', users);
-app.use('/auth', auth);
+app.use('/api/listings', listings);
+app.use('/api/events', events);
+app.use('/api/auth', auth);
+app.use('/api/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

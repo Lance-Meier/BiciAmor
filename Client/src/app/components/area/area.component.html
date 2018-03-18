@@ -1,0 +1,30 @@
+<a [routerLink]="['/']">Home</a>
+<button *ngIf="user" (click)="logout()" >Logout</button>
+<div class="container">
+  <div style="text-align:center">
+    <h1>
+      Local Bike Services
+    </h1>
+
+  </div>
+  <div>
+    <div class="text-white">
+      <span>Latitude: {{currentLat}}</span>
+      <span>Longitude: {{currentLong}}</span><br><br>
+      <label>Search a different place:</label><br><br><input type="text" placeholder="enter city">
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center">
+          <h3>
+            <div #gmap style="width:80%;height:500px"></div>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer>
+  </footer>
+</div>

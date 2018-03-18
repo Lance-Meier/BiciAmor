@@ -1,0 +1,14 @@
+<h1>Welcome to Bike-Amor</h1>
+<h2>Get pedaling: Find events and be a part of your local community</h2>
+
+<div>
+<h3>Log-In</h3>
+  <form>
+    <input [(ngModel)]="user.email" type="text" placeholder="E-mail Address" name="email"><br>
+    <input [(ngModel)]="user.password" type="password" placeholder="Password" name="password"><br>
+    <button (click)="login()">Enter Dashboard</button><br><br>
+  </form>
+    <button (click)="facebookLogin()">Log-In with Facebook</button><br>
+    <button (click)="googleLogin()">Log-In with Google</button>
+    <h3>Not a member of Bike-Amor yet? <a [routerLink]="['/signup']">Sign Up</a> here to get started</h3>
+</div>

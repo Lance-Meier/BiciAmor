@@ -1,0 +1,25 @@
+<a [routerLink]="['/']">Home</a>
+<button *ngIf="user" (click)="logout()" >Logout</button>
+<p>
+  listing works!
+</p>
+<button>I have a new announcement</button>
+<form >
+  <input [(ngModel)]="newListing.name" type="text" placeholder="Name" name="name"><br>
+  <input [(ngModel)]="newListing.description" type="text" placeholder="Description" name="description"><br>
+  <input [(ngModel)]="newListing.price" type="text" placeholder="Price" name="price"><br>
+  <input [(ngModel)]="newListing.location" type="text" placeholder="location" name="location"><br>
+  <input [(ngModel)]="newListing.image" type="file" name="image"><br>
+  <button (click)="makeListing()">Create Listing</button>
+</form>
+<h1>All Listings</h1>
+<ul>
+  <li *ngFor="let listing of listings">
+    <h3>{{listing.name}}</h3>
+    <h3>{{listing.description}}</h3>
+    <h3>{{listing.price}}</h3>
+    <h3>{{listing.location}}</h3>
+    <img [src] = "listing.image" [alt]= "listing.name"/>
+  </li>
+
+</ul>

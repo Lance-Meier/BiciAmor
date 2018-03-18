@@ -1,0 +1,16 @@
+<a [routerLink]="['/']">Home</a>
+<button (click)="logout()" >Logout</button>
+
+<app-login *ngIf="!user"></app-login>
+<div *ngIf="user">
+  <h2>Profile</h2>
+  <div>
+    <a [routerLink]="['event']"><h1>Calendar of Events</h1></a>
+  </div>
+  <div>
+    <a [routerLink]="['listing']"><h1>Local Listings</h1></a>
+  </div>
+  <div>
+    <a [routerLink]="['area']"><h1>Area Services and Businesses</h1></a>
+  </div>
+</div>

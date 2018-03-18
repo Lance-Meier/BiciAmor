@@ -1,3 +1,4 @@
+//User Model
 const Schema = require("mongoose").Schema;
 const PassportLocalMongoose = require("passport-local-mongoose");
 const userSchema = new require("mongoose").Schema({
@@ -6,19 +7,25 @@ const userSchema = new require("mongoose").Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
     },
     password:{
+        type:String,
+    },
+    facebookId: {
         type:String
     },
-    events: [
+    googleId: {
+        type:String
+    },
+    myEvents: [
         {
-        eventId:Schema.Types.ObjectId
+        eventId: { type: Schema.Types.ObjectId, ref: 'Event' },
     }
     ],
-    products: [
+    myListings: [
         {
-        productId:Schema.Types.ObjectId
+        listingId: { type: Schema.Types.ObjectId, ref: 'Listing' },
     }
     ],
     roles:{
