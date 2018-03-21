@@ -16,10 +16,9 @@ export class ListingComponent implements OnInit {
   constructor(private listingService: ListingService, private auth: AuthService, private router: Router) { }
 
   logout() {
-    this.auth.logout();
-    this.router.navigate(['']);
+    this.auth.logout()
+      .subscribe(() => this.router.navigate(['']));
   }
-
   makeListing() {
     this.listingService.makeListing(this.newListing)
     .subscribe(listing => {

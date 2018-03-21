@@ -25,7 +25,10 @@ export class AuthService {
 
   login(user) { // added to component
     return this.http.post(`${this.BASE_URL}/login`, user, {withCredentials: true})
-      .map(res => res.json())
+      .map(res => {
+        res.json();
+        location.reload();
+      })
       .catch(e => {
         return Observable.throw(e);
       });
@@ -33,7 +36,10 @@ export class AuthService {
 
   logout() { // needs work to implement and show properly
     return this.http.post(`${this.BASE_URL}/logout`, {}, {withCredentials: true})
-      .map(res => res.json())
+      .map(res => {
+        res.json();
+        location.reload();
+      })
       .catch(this.handleError);
   }
 

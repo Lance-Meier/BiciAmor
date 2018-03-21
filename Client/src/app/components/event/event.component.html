@@ -1,5 +1,7 @@
-<a [routerLink]="['/']">Home</a>
-<button *ngIf="user" (click)="logout()" >Logout</button>
 <p>
   event works!
 </p>
+<div *ngIf="!user">
+  <h1>Forbidden</h1>
+  <a [routerLink]="['']">Click here to Log In</a>
+</div>

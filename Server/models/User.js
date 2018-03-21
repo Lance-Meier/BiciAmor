@@ -3,14 +3,12 @@ const Schema = require("mongoose").Schema;
 const PassportLocalMongoose = require("passport-local-mongoose");
 const userSchema = new require("mongoose").Schema({
     name:{
-        type:String
+        type:String,
+        required: true
     },
     email:{
         type:String,
-        required:true,
-    },
-    password:{
-        type:String,
+        required:true
     },
     facebookId: {
         type:String

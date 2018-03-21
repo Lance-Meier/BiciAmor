@@ -12,6 +12,8 @@ import { } from '@types/googlemaps';
 })
 
 export class AreaComponent implements OnInit {
+  user: any;
+
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
   isTracking = false;
@@ -32,12 +34,19 @@ export class AreaComponent implements OnInit {
 
   ngOnInit() {
     this.map = new google.maps.Map(this.gmapElement.nativeElement, this.mapProp);
-    this.findMe()
-      .then(() => console.log('functioning correctly'))
-      .catch(err => this.findNearby());
-    this.findByClick();
+        this.findMe()
+          .then(() => console.log('Working Correctly'))
+          .catch(err => this.findNearby());
+        this.findByClick();
+    this.showPage();
   }
+  showPage() {
+    this.auth.isLoggedIn()
+    .subscribe(userLogged => {
+      this.user = userLogged;
+    });
 
+  }
     // Retrieve Initial Postion
     showPosition(position) {
       this.currentLat = position.coords.latitude;
@@ -103,7 +112,6 @@ export class AreaComponent implements OnInit {
       this.mapService.nearbySearch(this.request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (let i = 0; i < results.length; i++) {
-            console.log(results[i]);
             this.placesList.push(this.createMarker(results[i]));
           }
         }
@@ -139,8 +147,8 @@ export class AreaComponent implements OnInit {
 
     // Standard Logout Function
     logout() {
-      this.auth.logout();
-      this.router.navigate(['']);
+      this.auth.logout()
+        .subscribe(() => this.router.navigate(['']));
     }
 
   // When the page loads, create the prop map, then set the browser position to the current position

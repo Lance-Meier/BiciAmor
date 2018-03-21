@@ -17,21 +17,25 @@ import { SignupComponent } from './components/signup/signup.component';
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { ListingDetailComponent } from './components/listing-detail/listing-detail.component';
 import { AreaComponent } from './components/area/area.component';
+import { NavComponent } from './components/nav/nav.component';
 
 import { AuthService } from './services/auth.service';
 import { EventService } from './services/event.service';
 import { ListingService} from './services/listing.service';
 import { UserService } from './services/user.service';
 
+import { EnterDetailsGuardService } from './services/checkIfLogged.service';
+
 const routes = [
+  {path: '', component: DashboardComponent, pathMatch: 'full' },
   {path: '', component: DashboardComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'event', component: EventComponent},
-  {path: 'event/:id', component: EventDetailComponent},
-  {path: 'listing', component: ListingComponent},
-  {path: 'listing/:id', component: ListingDetailComponent},
-  {path: 'area', component: AreaComponent},
-  {path: 'user/:id', component: UserComponent},
+  {path: 'event', component: EventComponent, canActivate: [EnterDetailsGuardService]},
+  {path: 'event/:id', component: EventDetailComponent, canActivate: [EnterDetailsGuardService]},
+  {path: 'listing', component: ListingComponent, canActivate: [EnterDetailsGuardService]},
+  {path: 'listing/:id', component: ListingDetailComponent, canActivate: [EnterDetailsGuardService]},
+  {path: 'area', component: AreaComponent, canActivate: [EnterDetailsGuardService]},
+  {path: 'user/:id', component: UserComponent, canActivate: [EnterDetailsGuardService]},
 ];
 
 
@@ -46,7 +50,8 @@ const routes = [
     SignupComponent,
     EventDetailComponent,
     ListingDetailComponent,
-    AreaComponent
+    AreaComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,7 @@ const routes = [
     Angular2FontawesomeModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, EventService, ListingService, UserService],
+  providers: [AuthService, EventService, ListingService, UserService, EnterDetailsGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

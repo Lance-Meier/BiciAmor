@@ -1,0 +1,67 @@
+/* Style the video: 100% width and height to cover the entire window */
+h1 {
+  font-size: 3.5em;
+}
+h2{
+  font-size: 2em;
+}
+h3{
+  font-size: 1.5em;
+}
+#myVideo {
+    position: absolute;
+    z-index: -2;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+@media only screen and (max-width: 800px) {
+  #myVideo {
+    position: absolute;
+    z-index: -2;
+    right: 0;
+    bottom: 0;
+    min-width: 300%; 
+    min-height: 100%;
+}
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+    position: absolute;
+    z-index: -1;
+    margin: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    height: 100%;
+    
+}
+.login-form{
+  position: absolute;
+  top: 100px;
+  width: 100%;
+}
+
+.light-text{
+  color: #f1f1f1;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#myBtn:hover {
+    background: #ddd;
+    color: black;
+}
+

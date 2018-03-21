@@ -13,10 +13,9 @@ export class EventDetailComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   logout() {
-    this.auth.logout();
-    this.router.navigate(['']);
+    this.auth.logout()
+      .subscribe(() => this.router.navigate(['']));
   }
-
   ngOnInit() {
   }
 

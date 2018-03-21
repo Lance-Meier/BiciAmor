@@ -1,5 +1,12 @@
-<a [routerLink]="['/']">Home</a>
-<button *ngIf="user" (click)="logout()" >Logout</button>
-<p>
-  user works!
-</p>
+<h1>Hello {{user.name}}!</h1>
+  <form #myForm='ngForm' (ngSubmit)='updateUser(myForm)'>
+    <input ngModel type="text" placeholder="What's Your New Name?" name="name" required><br>
+    <input ngModel type="email" placeholder="What's Your New E-mail?" name="email" required><br>
+    <!-- <input ngModel type="password" placeholder="Create Your New Password" name="password" required><br>
+    <input ngModel type="password" placeholder="Repeat Your New Password" name="password2" required><br> -->
+    <input type='submit' class="button is-warning" *ngIf="user.password === user.password2" value='Update Profile'/>
+    <input type='submit' class="button is-warning" *ngIf="user.password !== user.password2" value='Update Profile' disabled/>
+  </form>
+  <br>
+  <br>
+  <div class="button is-danger" (click)="deleteUser()">Delete My Profile</div>

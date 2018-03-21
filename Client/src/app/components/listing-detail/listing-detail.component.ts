@@ -19,8 +19,8 @@ export class ListingDetailComponent implements OnInit {
     private auth: AuthService, private router: Router) { }
 
   logout() {
-    this.auth.logout();
-    this.router.navigate(['']);
+    this.auth.logout()
+      .subscribe(() => this.router.navigate(['']));
   }
   deleteListing() {
     this.listing.deleteListing(this.listingItem.id);
@@ -30,7 +30,7 @@ export class ListingDetailComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.listing.getSingleListing(params['id'])
-      .subscribe(singleItem => this. listingItem = singleItem);
+      .subscribe(singleItem => this.listingItem = singleItem);
     });
   }
 

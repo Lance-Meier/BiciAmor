@@ -1,14 +1,39 @@
-<h1>Welcome to Bike-Amor</h1>
-<h2>Get pedaling: Find events and be a part of your local community</h2>
-
-<div>
-<h3>Log-In</h3>
-  <form>
-    <input [(ngModel)]="user.email" type="text" placeholder="E-mail Address" name="email"><br>
-    <input [(ngModel)]="user.password" type="password" placeholder="Password" name="password"><br>
-    <button (click)="login()">Enter Dashboard</button><br><br>
-  </form>
-    <button (click)="facebookLogin()">Log-In with Facebook</button><br>
-    <button (click)="googleLogin()">Log-In with Google</button>
-    <h3>Not a member of Bike-Amor yet? <a [routerLink]="['/signup']">Sign Up</a> here to get started</h3>
-</div>
+<!-- The video -->
+<video controls autoplay muted loop id="myVideo">
+    <source src="../../../assets/343014810.mp4" type="video/mp4" muted>
+  </video>
+  
+<!-- Optional: some overlay text to describe the video -->
+<div class="content">
+  <div class="login-form">
+    <div class="columns">
+      <div class="column is-4 is-offset-1">
+        <br>
+        <h1 class="light-text">Welcome to Bike-Amor</h1>
+        <h2 class="light-text">Get pedaling: Find events and take part in your local cycling community</h2>
+      </div>
+      <div class="column is-one-quarter is-offset-2">
+        <br>
+        <br>
+        <h2 class="light-text">Log-In</h2>
+        <form>
+          <input class="input " [(ngModel)]="user.email" type="text" placeholder="E-mail Address" name="email"><br><br>
+          <input class="input " [(ngModel)]="user.password" type="password" placeholder="Password" name="password"><br><br>
+          <button class="button is-primary" (click)="login()">Enter Dashboard</button><br><br>
+        </form>
+      </div>
+      </div>
+      <div class="columns">
+        <div class = "column is-one-third is-offset-1">
+          <h3 class="light-text">Not a member of Bike-Amor yet?</h3>
+          <a [routerLink]="['/signup']"><button class="button is-primary">Sign Up</button></a>
+        </div>
+        <div class="column is-2 is-offset-2 social-button">
+          <button class="button is-link" (click)="facebookLogin()">Log-In with Facebook</button><br>
+        </div>
+        <div class="column is-offset--1 social-button">
+          <button class="button is-danger" (click)="googleLogin()">Log-In with Google</button>
+        </div>
+      </div>
+    </div>
+  </div>

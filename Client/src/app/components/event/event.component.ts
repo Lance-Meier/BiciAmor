@@ -9,15 +9,20 @@ import { AuthService } from '../../services/auth.service';
   providers: [AuthService]
 })
 export class EventComponent implements OnInit {
+  user: any;
 
   constructor(private auth: AuthService, private router: Router) { }
 
   logout() {
-    this.auth.logout();
-    this.router.navigate(['']);
+    this.auth.logout()
+      .subscribe(() => this.router.navigate(['']));
   }
 
   ngOnInit() {
+    this.auth.isLoggedIn()
+    .subscribe(userLogged => {
+      this.user = userLogged;
+    });
   }
 
 }

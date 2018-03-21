@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
   // insert google login
 
     ngOnInit() {
-      if (localStorage.getItem('user')) {
-        this.router.navigate(['']);
-    }
+      document.querySelector('video').defaultPlaybackRate = 0.5;
   }
 }
