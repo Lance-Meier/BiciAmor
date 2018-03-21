@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class EnterDetailsGuardService implements CanActivate {
-  BASE_URL = 'http://localhost:3000/api/auth';
+  
+  BASE_URL = environment.BASE_URL + 'api/auth';
 
   constructor(private http: Http, private router: Router) { }
   handleError(e) {

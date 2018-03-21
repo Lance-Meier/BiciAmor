@@ -1,3 +1,4 @@
+require ('dotenv').config();
 //From Express
 var express = require('express');
 var path = require('path');
@@ -29,10 +30,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-
 //Create DB: Modify address as needed for dev and prod
-require("mongoose").connect('mongodb://localhost/bici-amor')
-.then(console.log("Connected to DB!!!"));
+require("mongoose").connect(process.env.mongoURL)
+.then(console.log(`Connected to ${process.env.mongoURL}`));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

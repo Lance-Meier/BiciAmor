@@ -4,12 +4,14 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
+  BASE_URL = environment.BASE_URL + 'api/auth';
+
   constructor(private http: Http) { }
-  BASE_URL = 'http://localhost:3000/api/auth';
 
   handleError(e) {
     return Observable.throw(e.json().message);

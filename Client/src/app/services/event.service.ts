@@ -5,12 +5,14 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EventService {
 
+  BASE_URL = environment.BASE_URL + 'api/events';
+
   constructor(private http: Http) { }
-  BASE_URL = 'http://localhost:3000/api/events';
 
 getEvents() {
   return this.http.get(`${this.BASE_URL}`)

@@ -5,14 +5,17 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ListingService {
   options: {withCredentials: true, Headers: 'Content-Type: application/json'};
 
  headers = new Headers({'Content-Type': 'application/json'});
+
+ BASE_URL = environment.BASE_URL + 'api/listings';
+
   constructor(private http: Http) { }
-  BASE_URL = 'http://localhost:3000/api/listings';
 
 getListings() { // added to listing component: DONE
   return this.http.get(`${this.BASE_URL}`)
