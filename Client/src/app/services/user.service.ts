@@ -29,7 +29,6 @@ export class UserService {
   }
 
   deleteUser(id) {
-    confirm('Are you sure you want to delete your user?');
     return this.http.delete(`${this.BASE_URL}/${id}`, {withCredentials: true})
     .map(res => res.json())
     .catch(e => {

@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
     password: String,
     image: String
   };
+  confirmStatus: Boolean;
 
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService,
     private auth: AuthService, private router: Router) { }
@@ -26,17 +27,20 @@ export class UserComponent implements OnInit {
       .subscribe(() => this.router.navigate(['']));
   }
   deleteUser() {
-    this.userService.deleteUser(this.user._id);
-    this.logout();
-    this.router.navigate(['']);
+    this.confirmStatus = confirm('Are you sure you want to delete your user?');
+    if (this.confirmStatus) {
+      this.userService.deleteUser(this.user._id);
+      this.logout();
+      this.router.navigate(['']);
+    } else {
+      return;
+    }
   }
   updateUser(form) {
-    console.log(form.value);
     this.userService.updateUser(this.user._id, form.value)
     .subscribe(res => {
       console.log(res);
     });
-    this.router.navigate(['']);
     location.reload();
   }
   ngOnInit() {

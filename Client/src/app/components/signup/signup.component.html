@@ -1,9 +1,20 @@
-<h1>Hello!<br>Account Creation</h1>
-<form>
-  <input [(ngModel)]="newUser.name" type="text" placeholder="What's Your Name?" name="name" required><br>
-  <input [(ngModel)]="newUser.email" type="email" placeholder="What's Your E-mail?" name="email" required><br>
-  <input [(ngModel)]="newUser.password" type="password" placeholder="Create Your Password" name="password" required><br>
-  <input [(ngModel)]="newUser.password2" type="password" placeholder="Repeat Your Password" name="password2" required><br>
-  <button (click)="signUp()" *ngIf="newUser.password === newUser.password2"> Create Account</button>
-  <button *ngIf="newUser.password !== newUser.password2" disabled>Create Account</button>
-</form>
+<!doctype html>
+<div class="main-container">
+  <div class="columns signup-main">
+    <div class="column is-half is-offset-one-quarter">
+      <h1>Hello!</h1>
+      <h1>Account Creation</h1>
+      <br>
+      <form>
+        <input class="input" [(ngModel)]="newUser.name" type="text" placeholder="What's Your Name?" name="name" required><br><br>
+        <input class="input" [(ngModel)]="newUser.email" type="email" placeholder="What's Your E-mail?" name="email" required><br><br>
+        <input class="input" [(ngModel)]="newUser.password" type="password" placeholder="Create Your Password" name="password" required><br><br>
+        <input class="input" [(ngModel)]="newUser.password2" type="password" placeholder="Repeat Your Password" name="password2" required><br>
+        <br>
+        <button class="button is-primary" (click)="signUp()" *ngIf="newUser.password === newUser.password2"> Create Account</button>
+        <button class="button is-primary" *ngIf="newUser.password !== newUser.password2" disabled>Passwords Must Match</button>
+      </form>
+    </div>
+  </div>
+  <img src="../../../assets/thumb-1920-280639.jpg"/>
+</div>
