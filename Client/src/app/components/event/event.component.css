@@ -1,0 +1,12 @@
+img{
+  margin: 0 0 0 15%;
+}
+h1 {
+  font-size: 3.5em;
+  color: #f1f1f1;
+  text-align: center
+
+}
+.heading-main {
+  background: rgba(0, 0, 0, 0.8) no-repeat fixed center; 
+}

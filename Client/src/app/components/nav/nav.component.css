@@ -1,3 +1,6 @@
 .navbar-item img {
-  max-height: 5rem;
+  max-height: 6rem;
+}
+.about {
+  font-size: 1.5em;
 }

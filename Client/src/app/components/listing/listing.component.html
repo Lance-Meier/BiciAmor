@@ -1,20 +1,61 @@
-<button>I have a new announcement</button>
-<form >
-  <input [(ngModel)]="newListing.name" type="text" placeholder="Name" name="name"><br>
-  <input [(ngModel)]="newListing.description" type="text" placeholder="Description" name="description"><br>
-  <input [(ngModel)]="newListing.price" type="text" placeholder="Price" name="price"><br>
-  <input [(ngModel)]="newListing.location" type="text" placeholder="location" name="location"><br>
-  <input [(ngModel)]="newListing.image" type="file" name="image"><br>
-  <button (click)="makeListing()">Create Listing</button>
-</form>
-<h1>All Listings</h1>
-<ul>
-  <li *ngFor="let listing of listings">
-    <h3>{{listing.name}}</h3>
-    <h3>{{listing.description}}</h3>
-    <h3>{{listing.price}}</h3>
-    <h3>{{listing.location}}</h3>
-    <img [src] = "listing.image" [alt]= "listing.name"/>
-  </li>
+  <div class="columns">
+    <div class="column">
+      <div style="text-align:center" class="heading-main">
+        <br>
+        <h1>Local Listings and Announcements</h1>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <button class="button is-primary">I have a new announcement</button><br><br>
+      <form>
+        <input class="input" [(ngModel)]="newListing.name" type="text" placeholder="Name" name="name" required><br><br>
+        <input class="input" [(ngModel)]="newListing.description" type="text" placeholder="Description" name="description" required><br><br>
+        <input class="input" [(ngModel)]="newListing.price" type="text" placeholder="Price" name="price" required><br><br>
+        <input class="input" [(ngModel)]="newListing.location" type="text" placeholder="Location" name="location" required><br><br>
+        <label>Image for Listing</label><br><input [(ngModel)]="newListing.image" type="file" name="image" disabled><br><br>
+        <button class="button is-success"(click)="makeListing()">Create Listing</button>
+      </form>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <div style="text-align:center" class="heading-listing">
+        <br>
+        <h1>Recent Listings</h1>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="card-container">
+    <br>
+    <div *ngFor="let listing of listings" class="card listing-card">
+        <div class="card-image">
+          <figure class="image image is-256x256">
+            <img src ="https://dp.image-gmkt.com/dp2016/SG/GMKT.IMG/theme/2016/10/17/9beaa029-5434-496d-ba43-487e5b931202.png" alt="listing image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content media-left">
+              <a [href]="listing._id"><p class="title is-2">{{listing.name}}</p></a>
+              <br>
+              <p class="subtitle is-4">Price: {{listing.price}}</p>
+              <p class="subtitle is-4">Description: {{listing.description}}</p>
+              <p class="subtitle is-4">Location: {{listing.location}}</p>
+              <a [href]="listing.createdBy"><p class="subtitle is-4">Created By: {{listing.createdBy}}</p></a><br>
+              <p class="subtitle is-4"><time datetime="2016-1-1">Created On: {{listing.created_at}}</time></p>
+            </div>
+            <div class="media-right">
+                <figure class="image is-96x96">
+                    <img src="https://azmeela.com/assets/img/user-160x160.jpg" alt="user image">
+                </figure>
+              </div>
+          </div>
+        </div>
+      </div>
+      <br>
+  </div>  
 
-</ul>

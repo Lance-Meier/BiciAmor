@@ -1,13 +1,41 @@
 <app-login *ngIf="!user"></app-login>
-<div *ngIf="user">
-  <h2>Welcome</h2>
-  <div>
-    <a [routerLink]="['event']"><h1>Calendar of Events</h1></a>
+<div *ngIf="user" class="dashboard-main">
+  
+  <br>
+  <div class="columns">
+    <div class="column is-7 is-offset-3">
+      <h1>What would you like to find?</h1>
+      <br>
+    </div>
   </div>
-  <div>
-    <a [routerLink]="['listing']"><h1>Local Listings</h1></a>
-  </div>
-  <div>
-    <a [routerLink]="['area']"><h1>Area Services and Businesses</h1></a>
+  <div class="columns">
+    <div class="column click-item">
+      <br>
+      <a [routerLink]="['event']">
+        <i class="far fa-calendar-alt"></i>
+        <br>
+        <br>
+        <h2>Local Events</h2>
+      </a>
+    </div>
+    <br>
+    <div class="column click-item">
+      <br>
+      <a [routerLink]="['area']">
+          <i class="fas fa-wrench"></i>
+          <br>
+          <br>
+          <h2>Area Services and Businesses</h2>
+      </a>
+    </div>
+    <div class="column click-item">
+      <br>
+      <a [routerLink]="['listing']">
+          <i class="fas fa-dollar-sign"></i>
+          <br>
+          <br>
+          <h2>Local User Listings</h2>
+      </a>
+    </div>
   </div>
 </div>
