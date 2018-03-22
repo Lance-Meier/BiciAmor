@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -9,14 +10,20 @@ import { AuthService } from '../../services/auth.service';
   providers: [AuthService]
 })
 export class SignupComponent implements OnInit {
-  newUser = {};
+  newUser = {
+    name
+  };
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, public toastr: ToastsManager,
+    vcr: ViewContainerRef) {
+      this.toastr.setRootViewContainerRef(vcr);
+    }
 
   signUp() {
     this.auth.signUp(this.newUser)
     .subscribe(user => {
-      this.router.navigate(['']);
+      this.toastr.success(`Welcome ${this.newUser.name}!`, 'Success');
+      setTimeout (() => { this.router.navigate(['']); }, 500);
     });
   }
 
