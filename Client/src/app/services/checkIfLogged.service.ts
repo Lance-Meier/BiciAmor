@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EnterDetailsGuardService implements CanActivate {
-  
+
   BASE_URL = environment.BASE_URL + 'api/auth';
 
   constructor(private http: Http, private router: Router) { }

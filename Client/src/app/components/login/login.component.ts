@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +13,15 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   user = {};
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, public toastr: ToastsManager,
+  vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   login() {
     this.auth.login(this.user)
     .subscribe(res => {
       this.user = res;
-      this.router.navigate(['']);
     });
   }
 
@@ -27,6 +30,5 @@ export class LoginComponent implements OnInit {
   // insert google login
 
     ngOnInit() {
-      document.querySelector('video').defaultPlaybackRate = 0.5;
   }
 }

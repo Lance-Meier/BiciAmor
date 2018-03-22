@@ -1,23 +1,23 @@
 <div class="main-container"> 
- <div class="columns user-main">
-    <div class="column is-half  is-offset-one-fifth">
-      <br>
-      <h1>Hello {{user.name}}!</h1><br>
-      <form #myForm='ngForm' (ngSubmit)='updateUser(myForm)'>
-        <input class="input" ngModel type="text" placeholder="What's Your New Name?" name="name" required><br><br>
-        <input class="input" ngModel type="email" placeholder="What's Your New E-mail?" name="email" required><br><br>
-        <!-- <input ngModel type="password" placeholder="Create Your New Password" name="password" required><br>
-        <input ngModel type="password" placeholder="Repeat Your New Password" name="password2" required><br> -->
-        <input type='submit' class="button is-warning" *ngIf="user.password === user.password2" value='Update Profile'/>
-        <input type='submit' class="button is-warning" *ngIf="user.password !== user.password2" value='Passwords Must Match' disabled/>
-      </form>
-      <br>
-      <br>
-    </div>
-  </div>
-  <div class="columns user-main">
-    <div class="column is-half is-offset-one-fifth">
-      <button class="button is-danger" (click)="deleteUser()">Delete My Profile</button>
+ <div class="user-main">
+    <div class="columns">
+      <div class="column is-one-third is-offset-one-third">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Hello {{user.name}}!</h1><br>
+        <form #myForm='ngForm' (ngSubmit)='updateUser(myForm)' novalidate>
+          <input class="input" ngModel type="text" placeholder="Update your name" name="name" ng-required="required" required><br><br>
+          <input class="input" ngModel type="email" placeholder="Update your email" name="email" ng-required="required" required><br><br>
+          <!-- <input ngModel type="password" placeholder="Create Your New Password" name="password" required><br>
+          <input ngModel type="password" placeholder="Repeat Your New Password" name="password2" required><br> -->
+          <input type='submit' class="button is-warning" *ngIf="user.password === user.password2" value='Update Profile'/>
+          <input type='submit' class="button is-warning" *ngIf="user.password !== user.password2" value='Passwords Must Match' disabled/>
+        </form>
+        <br>
+        <button class="button is-danger" (click)="deleteUser()">Delete My Profile</button>
+      </div>
     </div>
   </div>
   <img src="../../../assets/thumb-1920-345366.jpg">

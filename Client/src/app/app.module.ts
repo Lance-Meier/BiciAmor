@@ -24,6 +24,9 @@ import { EventService } from './services/event.service';
 import { ListingService} from './services/listing.service';
 import { UserService } from './services/user.service';
 
+// imports
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { EnterDetailsGuardService } from './services/checkIfLogged.service';
 
 const routes = [
@@ -58,7 +61,9 @@ const routes = [
     HttpModule,
     FormsModule,
     Angular2FontawesomeModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ToastModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [AuthService, EventService, ListingService, UserService, EnterDetailsGuardService],
   bootstrap: [AppComponent]

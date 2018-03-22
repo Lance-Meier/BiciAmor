@@ -21,7 +21,7 @@ exports.patchListing = (req,res,next)=>{
 }
 
 exports.getListings = (req, res, next)=>{
-  Listing.find()
+  Listing.find({}).sort({_id:-1})
     .then(items=>res.status(200).json(items))
     .catch(e=>res.status(500).send(e));
   }

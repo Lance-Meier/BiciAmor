@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
   makeListing() {
     this.listingService.makeListing(this.newListing)
     .subscribe(listing => {
-      this.router.navigate(['']);
+      location.reload();
     });
   }
 
