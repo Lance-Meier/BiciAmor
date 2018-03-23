@@ -15,7 +15,7 @@ export const environment = {
   BASE_URL: ''
 };
 
-ng -build --prod --aot=false
+ng build --prod --aot=false
 
 manually transfer dist into server/public
 
