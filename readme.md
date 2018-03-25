@@ -15,7 +15,7 @@ export const environment = {
   BASE_URL: ''
 };
 
-ng build --prod --aot=false
+ng build --env --aot=false
 
 manually transfer dist into server/public
 
@@ -23,7 +23,7 @@ check 3000 to see that everything works in the back-end
 
 create heroku project
 
-heroku git:remote  -a bikeamor  <---heroku app name
+connect to heroku git: remote  -a bikeamor  <---heroku app name
 
 git remote -v  <-- to check if the heroku repo is present
 
@@ -31,7 +31,7 @@ git commit -am "preparing heroku deploy"
 
 git push origin master
 
-git subtree push --prefix=Server <---name of the back end folder, DO NOT PUSH Client
+git subtree push --prefix=Server heroku master <---name of the back end folder, DO NOT PUSH Client
 
 check for errors by running the app in heroku
 
