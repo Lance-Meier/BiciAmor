@@ -9,7 +9,8 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ListingService {
-  options: {withCredentials: true, Headers: 'Content-Type: application/json'};
+
+ options: {withCredentials: true, Headers: 'Content-Type: application/json'};
 
  headers = new Headers({'Content-Type': 'application/json'});
 
